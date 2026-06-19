@@ -5,5 +5,7 @@
 [node name="LevelBase" type="Node" unique_id=565985264]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1333036121]
+position = Vector2(0, -228)
+scale = Vector2(1.135, 1.135)
 texture = ExtResource("1_fe7a1")
 centered = false
