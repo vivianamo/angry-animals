@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ch7drh8j4ene1"]
 
 [ext_resource type="Texture2D" uid="uid://cwoig4bgqi10a" path="res://Assets/env/elementWood019.png" id="1_op87j"]
+[ext_resource type="Texture2D" uid="uid://c43vmidihts63" path="res://Assets/player/parrot.png" id="2_oj776"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj776"]
 size = Vector2(1023, 36)
@@ -19,3 +20,8 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=715871092]
 position = Vector2(581.5, 18)
 shape = SubResource("RectangleShape2D_oj776")
+
+[node name="Bird" type="RigidBody2D" parent="." unique_id=453880985]
+
+[node name="Sprite2D" type="Sprite2D" parent="Bird" unique_id=711312061]
+texture = ExtResource("2_oj776")
