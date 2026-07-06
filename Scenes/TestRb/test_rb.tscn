@@ -13,6 +13,12 @@ bounce = 0.49
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 38.013157
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3ytt"]
+radius = 125.100204
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(519, 24)
+
 [node name="TestRb" type="Node" unique_id=1834364457]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=368310792]
@@ -29,7 +35,7 @@ position = Vector2(581.5, 18)
 shape = SubResource("RectangleShape2D_oj776")
 
 [node name="Bird4" type="RigidBody2D" parent="." unique_id=831573263]
-position = Vector2(577, 260)
+position = Vector2(695, 350)
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_oj776")
 freeze = true
@@ -57,7 +63,8 @@ adflasdjflk
 aldfkjadslkfj"
 
 [node name="Bird5" type="RigidBody2D" parent="." unique_id=21332120]
-position = Vector2(579, 107)
+position = Vector2(349, 122)
+mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_oj776")
 metadata/_edit_group_ = true
 
@@ -67,6 +74,31 @@ texture = ExtResource("2_oj776")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird5" unique_id=2077246782]
 shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Pivot" type="StaticBody2D" parent="." unique_id=1491411261]
+position = Vector2(579.00006, 451)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=1584460133]
+self_modulate = Color(0.054573774, 0.054573774, 0.05457376, 1)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_oj776")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot" unique_id=1363528461]
+position = Vector2(0.00030517575, 0)
+shape = SubResource("CircleShape2D_w3ytt")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=624444256]
+position = Vector2(-52, 52)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1744484016]
+position = Vector2(574.00006, 354)
+scale = Vector2(7.471428, 0.122727275)
+texture = ExtResource("1_op87j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1047120466]
+position = Vector2(574.5, 354)
+shape = SubResource("RectangleShape2D_g4v7s")
 
 [connection signal="body_entered" from="Bird4" to="Bird4" method="_on_body_entered"]
 [connection signal="input_event" from="Bird4" to="Bird4" method="_on_input_event"]
