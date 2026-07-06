@@ -32,6 +32,8 @@ shape = SubResource("RectangleShape2D_oj776")
 position = Vector2(577, 260)
 physics_material_override = SubResource("PhysicsMaterial_oj776")
 freeze = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("2_w3ytt")
 metadata/_edit_group_ = true
 
@@ -65,4 +67,5 @@ texture = ExtResource("2_oj776")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird5" unique_id=2077246782]
 shape = SubResource("CircleShape2D_g4v7s")
 
+[connection signal="body_entered" from="Bird4" to="Bird4" method="_on_body_entered"]
 [connection signal="sleeping_state_changed" from="Bird4" to="Bird4" method="_on_sleeping_state_changed"]

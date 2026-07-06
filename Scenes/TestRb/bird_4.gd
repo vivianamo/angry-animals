@@ -5,7 +5,9 @@ extends RigidBody2D
 
 func _ready() -> void:
 	#sleeping_state_changed.connect(_on_sleeping_state_changed)
+	#body_entered.connect(_on_body_entered)
 	pass
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_down"):
 		freeze = false
@@ -21,3 +23,7 @@ func _process(_delta: float) -> void:
 
 func _on_sleeping_state_changed() -> void:
 	print("_on_sleeping_state_changed:", sleeping)# Replace with function body.
+	
+func _on_body_entered(body: Node) -> void:
+	print("_on_body_entered")# Replace with function body.
+	
