@@ -30,6 +30,7 @@ shape = SubResource("RectangleShape2D_oj776")
 
 [node name="Bird4" type="RigidBody2D" parent="." unique_id=831573263]
 position = Vector2(577, 260)
+input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_oj776")
 freeze = true
 contact_monitor = true
@@ -68,4 +69,5 @@ texture = ExtResource("2_oj776")
 shape = SubResource("CircleShape2D_g4v7s")
 
 [connection signal="body_entered" from="Bird4" to="Bird4" method="_on_body_entered"]
+[connection signal="input_event" from="Bird4" to="Bird4" method="_on_input_event"]
 [connection signal="sleeping_state_changed" from="Bird4" to="Bird4" method="_on_sleeping_state_changed"]

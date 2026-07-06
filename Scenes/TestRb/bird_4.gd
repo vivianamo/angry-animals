@@ -6,6 +6,7 @@ extends RigidBody2D
 func _ready() -> void:
 	#sleeping_state_changed.connect(_on_sleeping_state_changed)
 	#body_entered.connect(_on_body_entered)
+	#input_event.connect(_on_input_event)
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -26,4 +27,8 @@ func _on_sleeping_state_changed() -> void:
 	
 func _on_body_entered(body: Node) -> void:
 	print("_on_body_entered")# Replace with function body.
-	
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseMotion and event.button_mask == 1:
+		position = get_global_mouse_position()
