@@ -1,0 +1,10 @@
+extends Area2D
+
+@onready var splash_sound: AudioStreamPlayer2D = $SplashSound
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Animal:
+		splash_sound.play()
