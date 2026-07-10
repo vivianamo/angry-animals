@@ -4,11 +4,13 @@ extends RigidBody2D
 
 const DRAG_LIM_MAX: Vector2 = Vector2(0,60)
 const DRAG_LIM_MIN: Vector2 = Vector2(-60,0)
-
+const IMPULSE_MULT: float = 25.0
+const IMPULSE_MAX: float = 2000.0
 
 @onready var label: Label = $Label
 @onready var arrow: Sprite2D = $Arrow
 @onready var stretch_sound: AudioStreamPlayer2D = $StretchSound
+@onready var launch_sound: AudioStreamPlayer2D = $LaunchSound
 
 
 
@@ -16,21 +18,20 @@ var _start: Vector2 = Vector2.ZERO
 var _drag_start: Vector2 = Vector2.ZERO
 var _dragged_vector: Vector2 = Vector2.ZERO
 var _is_dragging: bool = false
-
+var _arrow_scale_x: float = 0.0
 
 
 func _ready() -> void:
 	_start = position	
+	_arrow_scale_x = arrow.scale.x
 	#sleeping_state_changed.connect(_on_sleeping_state_changed)
 	#body_entered.connect(_on_body_entered)
 	input_event.connect(_on_input_event)
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_down"):
-		freeze = false
-	if event.is_action_pressed("ui_up"):
-		apply_central_impulse(Vector2(200, -200))
+	if event.is_action_released("drag") and _is_dragging:
+		call_deferred("start_release")
 	
 func _process(_delta: float) -> void:
 	var debug_str: String = "FR:%s CC:%d SL:%s\n" % [
@@ -46,10 +47,20 @@ func _process(_delta: float) -> void:
 	debug_str += "dragged_vector: %.0f, %.0f" % [
 		_dragged_vector.x, _dragged_vector.y
 	]
+	debug_str += "impulse: %.0f, %.0f" % [
+		calculate_impulse().x, calculate_impulse().y
+	]
+	debug_str += "impulse length: %.0f" % [
+		calculate_impulse().length()
+	]
 	label.text = debug_str
+
 
 func _physics_process(delta: float) -> void:
 	if _is_dragging: handle_dragging()
+
+func calculate_impulse() -> Vector2:
+	return _dragged_vector * IMPULSE_MULT * -1
 
 func handle_dragging() -> void:
 	var new_dragged_vector: Vector2 =  get_global_mouse_position() - _drag_start
@@ -59,6 +70,7 @@ func handle_dragging() -> void:
 	if diff.length() > 0 and !stretch_sound.playing:
 		stretch_sound.play()
 	
+	scale_arrow()
 	_dragged_vector = new_dragged_vector
 	position = _start + _dragged_vector
 
@@ -73,6 +85,19 @@ func start_dragging() -> void:
 	_is_dragging = true
 	_drag_start = get_global_mouse_position()
 
+func start_release() -> void:
+	launch_sound.play()
+	arrow.hide()
+	_is_dragging = false
+	freeze = false
+	apply_central_impulse(calculate_impulse())
+
+func scale_arrow() -> void:
+	var imp_len: float = calculate_impulse().length()
+	var perc: float = clamp(imp_len / IMPULSE_MAX, 0.0, 1.0)
+	# lerp is for linear interpolation, built into godot
+	arrow.scale.x = lerpf(_arrow_scale_x, _arrow_scale_x *2, perc)
+	arrow.rotation = (_start - position).angle()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("drag"):
