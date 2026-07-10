@@ -13,7 +13,7 @@ texture = ExtResource("1_fe7a1")
 centered = false
 
 [node name="Animal" parent="." unique_id=2002639470 instance=ExtResource("2_1l5ts")]
-position = Vector2(649, 253)
+position = Vector2(78, 314)
 
-[node name="Water" parent="Animal" unique_id=678661711 instance=ExtResource("3_2wk6i")]
-position = Vector2(-70, 382)
+[node name="Water" parent="." unique_id=678661711 instance=ExtResource("3_2wk6i")]
+position = Vector2(579, 635)

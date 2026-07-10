@@ -7,4 +7,6 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Animal:
+		splash_sound.global_position = body.global_position
 		splash_sound.play()
+		body.die()
