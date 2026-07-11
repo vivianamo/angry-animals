@@ -100,6 +100,7 @@ func scale_arrow() -> void:
 	arrow.rotation = (_start - position).angle()
 
 func die() -> void:
+	SignalHub.on_animal_died
 	queue_free()
 
 

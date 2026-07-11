@@ -7,10 +7,11 @@ const ANIMAL = preload("uid://4nroecuchobm")
 
 
 func _ready() -> void:
+	SignalHub.on_animal_died.connect(SpawnAnimal)
 	SpawnAnimal()
 
 
 func SpawnAnimal() -> void:
 	var new_animal: Animal = ANIMAL.instantiate()
 	new_animal.position = start.position
-	animal_holder.add_child(new_animal)
+	call_deferred("add_child", animal_holder)
