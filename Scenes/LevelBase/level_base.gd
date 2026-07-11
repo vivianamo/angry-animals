@@ -14,4 +14,4 @@ func _ready() -> void:
 func SpawnAnimal() -> void:
 	var new_animal: Animal = ANIMAL.instantiate()
 	new_animal.position = start.position
-	call_deferred("add_child", animal_holder)
+	animal_holder.call_deferred("add_child", new_animal)
