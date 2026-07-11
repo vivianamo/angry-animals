@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 	label.text = debug_str
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if _is_dragging: handle_dragging()
 
 func calculate_impulse() -> Vector2:
@@ -77,7 +77,7 @@ func handle_dragging() -> void:
 func _on_sleeping_state_changed() -> void:
 	print("_on_sleeping_state_changed:", sleeping)# Replace with function body.
 	
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	print("_on_body_entered")# Replace with function body.
 
 func start_dragging() -> void:
@@ -100,11 +100,11 @@ func scale_arrow() -> void:
 	arrow.rotation = (_start - position).angle()
 
 func die() -> void:
-	SignalHub.on_animal_died
+	SignalHub.emit_on_animal_died()
 	queue_free()
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("drag"):
 		#to only get this event once, use disconnect
 		# it is possibly to have events automatically disconnect after one firing, by clicking into a signal and changing the advanced settings to One Shot 
