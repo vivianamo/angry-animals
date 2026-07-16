@@ -7,11 +7,15 @@
 [ext_resource type="AudioStream" uid="uid://v8sry077hab4" path="res://Assets/audio/kick_wood.ogg" id="4_br5s5"]
 [ext_resource type="Texture2D" uid="uid://f4oukfw2rvky" path="res://Assets/items/arrow.png" id="6_eawv1"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fu0cx"]
+bounce = 0.25
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 19.026299
 
 [node name="Animal" type="RigidBody2D" unique_id=2002639470]
 input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_fu0cx")
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1

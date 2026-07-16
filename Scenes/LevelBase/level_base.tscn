@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c7d53nanbsk1y" path="res://Assets/scene/colored_castle.png" id="1_fe7a1"]
 [ext_resource type="Script" uid="uid://3vkx8lf83b13" path="res://Scenes/LevelBase/level_base.gd" id="1_fu0cx"]
 [ext_resource type="PackedScene" uid="uid://dpopbvfsj5erv" path="res://Scenes/Water/water.tscn" id="3_2wk6i"]
+[ext_resource type="PackedScene" uid="uid://c0r8lspl71gj5" path="res://Scenes/Cup/cup.tscn" id="4_fu0cx"]
 
 [node name="LevelBase" type="Node" unique_id=565985264]
 script = ExtResource("1_fu0cx")
@@ -20,3 +21,6 @@ position = Vector2(150, 333)
 
 [node name="Water" parent="." unique_id=678661711 instance=ExtResource("3_2wk6i")]
 position = Vector2(579, 635)
+
+[node name="Cup" parent="." unique_id=1431755983 instance=ExtResource("4_fu0cx")]
+position = Vector2(269, 433)

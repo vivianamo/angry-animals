@@ -1,11 +1,28 @@
 [gd_scene format=3 uid="uid://c0r8lspl71gj5"]
 
 [ext_resource type="Texture2D" uid="uid://dht1e4bte34yv" path="res://Assets/env/elementWood004.png" id="1_0utp5"]
+[ext_resource type="Script" uid="uid://cg2j6jk3s815p" path="res://Scenes/Cup/cup.gd" id="1_yecwy"]
+[ext_resource type="Texture2D" uid="uid://bhhfkpt2qlgat" path="res://Assets/env/elementWood015.png" id="2_fwowy"]
 
 [node name="Cup" type="StaticBody2D" unique_id=1431755983]
+script = ExtResource("1_yecwy")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=530717884]
-position = Vector2(-70, -70)
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1657088603]
+position = Vector2(-72, -70)
 texture = ExtResource("1_0utp5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Visuals" unique_id=1138581530]
+position = Vector2(72, -70)
+texture = ExtResource("1_0utp5")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Visuals" unique_id=1536062275]
+texture = ExtResource("2_fwowy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1906423246]
+position = Vector2(1.2485453, 1.1969521)
+scale = Vector2(0.502907, 0.51258993)
+polygon = PackedVector2Array(-106, -102, -109.85838, 26.928051, 102.904625, 30.829807, 100.91618, -101.82984, 35.29769, -35.50002, -36.286125, -35.50002)
