@@ -11,6 +11,7 @@ const IMPULSE_MAX: float = 2000.0
 @onready var arrow: Sprite2D = $Arrow
 @onready var stretch_sound: AudioStreamPlayer2D = $StretchSound
 @onready var launch_sound: AudioStreamPlayer2D = $LaunchSound
+@onready var kick_sound: AudioStreamPlayer2D = $KickSound
 
 
 
@@ -24,7 +25,7 @@ var _arrow_scale_x: float = 0.0
 func _ready() -> void:
 	_start = position	
 	_arrow_scale_x = arrow.scale.x
-	#sleeping_state_changed.connect(_on_sleeping_state_changed)
+	sleeping_state_changed.connect(_on_sleeping_state_changed)
 	#body_entered.connect(_on_body_entered)
 	input_event.connect(_on_input_event)
 	body_entered.connect(_on_body_entered)
@@ -76,11 +77,16 @@ func handle_dragging() -> void:
 	position = _start + _dragged_vector
 
 func _on_sleeping_state_changed() -> void:
-	print("_on_sleeping_state_changed:", sleeping)# Replace with function body.
+	#print("_on_sleeping_state_changed:", sleeping)# Replace with function body.
+	if sleeping:
+		for body in get_colliding_bodies():
+			if body is Cup: body.die()
+		die()
 	
 func _on_body_entered(_body: Node) -> void:
-	print("Body entered: _body: ", _body)
-	SignalHub.emit_animal_hit_cup()
+	#print("Body entered: _body: ", _body)
+	if !kick_sound.playing:
+		kick_sound.play()
 
 func start_dragging() -> void:
 	arrow.show()
@@ -112,3 +118,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		# it is possibly to have events automatically disconnect after one firing, by clicking into a signal and changing the advanced settings to One Shot 
 		input_event.disconnect(_on_input_event)
 		start_dragging()
+		
+		
