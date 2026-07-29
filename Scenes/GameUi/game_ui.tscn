@@ -14,6 +14,7 @@ outline_size = 6
 outline_color = Color(0, 0.16301572, 0.16304412, 1)
 
 [node name="GameUi" type="Control" unique_id=1735409331]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,16 +34,35 @@ theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1915584017]
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=908824707]
+[node name="HBLevels" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=546580985]
 layout_mode = 2
-text = "Level 99"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBLevels" unique_id=1592386648]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level"
 label_settings = ExtResource("1_e7x7x")
 
-[node name="AttemptsLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1592386648]
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBLevels" unique_id=844094762]
 layout_mode = 2
-text = "Attempts 000"
+text = "000"
+label_settings = ExtResource("1_e7x7x")
+
+[node name="HBAttempts2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=790001909]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBAttempts2" unique_id=976731463]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attempts"
+label_settings = ExtResource("1_e7x7x")
+
+[node name="AttemptsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBAttempts2" unique_id=1452326612]
+layout_mode = 2
+text = "000"
 label_settings = ExtResource("1_e7x7x")
 
 [node name="VbComplete" type="VBoxContainer" parent="." unique_id=335369956]

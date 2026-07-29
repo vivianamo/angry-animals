@@ -34,6 +34,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("drag") and _is_dragging:
 		call_deferred("start_release")
+		
 	
 func _process(_delta: float) -> void:
 	var debug_str: String = "FR:%s CC:%d SL:%s\n" % [
@@ -99,6 +100,7 @@ func start_release() -> void:
 	_is_dragging = false
 	freeze = false
 	apply_central_impulse(calculate_impulse())
+	SignalHub.emit_on_attempt_made()
 
 func scale_arrow() -> void:
 	var imp_len: float = calculate_impulse().length()
