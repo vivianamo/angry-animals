@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://4rmjn4nuowkt"]
+
+[ext_resource type="Texture2D" uid="uid://cfn0foh3tn8rx" path="res://Assets/ui/panel_beige.png" id="1_flwdi"]
+[ext_resource type="Script" uid="uid://bfexg7ypixnuu" path="res://Scenes/LevelButton/level_button.gd" id="2_6ttex"]
+[ext_resource type="FontFile" uid="uid://cvggivpkv0c32" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="2_fqyka"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ttex"]
+font = ExtResource("2_fqyka")
+font_size = 48
+font_color = Color(0.99646384, 0.99646395, 0.99646395, 1)
+outline_size = 6
+outline_color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqyka"]
+font = ExtResource("2_fqyka")
+font_size = 28
+font_color = Color(0.99646384, 0.99646395, 0.99646395, 1)
+outline_size = 6
+outline_color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[sub_resource type="Animation" id="Animation_6j25p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ttex"]
+resource_name = "mouse_entered"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_2b86x"]
+resource_name = "mouse_exited"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6j25p"]
+_data = {
+&"RESET": SubResource("Animation_6j25p"),
+&"mouse_entered": SubResource("Animation_6ttex"),
+&"mouse_exited": SubResource("Animation_2b86x")
+}
+
+[node name="LevelButton" type="TextureButton" unique_id=1608696636]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_flwdi")
+script = ExtResource("2_6ttex")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1866666992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 12
+
+[node name="VB" type="VBoxContainer" parent="MarginContainer" unique_id=27078078]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VB" unique_id=1361892746]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_6ttex")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel2" type="Label" parent="MarginContainer/VB" unique_id=1612661601]
+layout_mode = 2
+text = "9999"
+label_settings = SubResource("LabelSettings_fqyka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=928180689]
+libraries/ = SubResource("AnimationLibrary_6j25p")
