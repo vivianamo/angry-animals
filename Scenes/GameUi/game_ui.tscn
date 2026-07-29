@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://4chs2lkt0al7"]
 
 [ext_resource type="LabelSettings" uid="uid://bb5ihv84g6p4q" path="res://Resources/LightLabel32.tres" id="1_e7x7x"]
+[ext_resource type="Script" uid="uid://binv6eca1fyfb" path="res://Scenes/GameUi/game_ui.gd" id="1_vneep"]
 [ext_resource type="LabelSettings" uid="uid://bu0krnnrxyi1" path="res://Resources/LightBlueLabel96.tres" id="2_3823d"]
 [ext_resource type="FontFile" uid="uid://cvggivpkv0c32" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="3_727vw"]
+[ext_resource type="AudioStream" uid="uid://ceyj1a2esjiyh" path="res://Assets/audio/jazzyfrenchy.mp3" id="5_xa7bn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vneep"]
 font = ExtResource("3_727vw")
@@ -19,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_vneep")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1397621612]
 layout_mode = 0
@@ -70,3 +73,8 @@ text = "Press Escape"
 label_settings = SubResource("LabelSettings_vneep")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1773173239]
+position = Vector2(211, 241.5)
+stream = ExtResource("5_xa7bn")
+parameters/looping = true

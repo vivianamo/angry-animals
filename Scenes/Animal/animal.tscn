@@ -26,6 +26,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_ya4tb")
 
 [node name="Label" type="Label" parent="." unique_id=781648803]
+visible = false
 top_level = true
 offset_left = 36.0
 offset_top = 32.0
