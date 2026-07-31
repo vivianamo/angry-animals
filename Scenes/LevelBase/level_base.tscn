@@ -20,6 +20,7 @@ position = Vector2(150, 333)
 [node name="AnimalHolder" type="Node" parent="." unique_id=1368771937]
 
 [node name="Water" parent="." unique_id=678661711 instance=ExtResource("3_2wk6i")]
+z_index = 10
 position = Vector2(579, 635)
 
 [node name="GameUi" parent="." unique_id=1735409331 instance=ExtResource("5_kkf17")]

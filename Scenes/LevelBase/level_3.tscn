@@ -15,4 +15,4 @@ position = Vector2(673, 195)
 position = Vector2(893, 416)
 
 [node name="Cup4" parent="." index="8" unique_id=758210350 instance=ExtResource("2_blxs8")]
-position = Vector2(893, 416)
+position = Vector2(597, 484)

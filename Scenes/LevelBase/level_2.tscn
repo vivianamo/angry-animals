@@ -6,10 +6,10 @@
 [node name="Level2" unique_id=565985264 instance=ExtResource("1_dvd4q")]
 
 [node name="Cup" parent="." index="5" unique_id=1431755983 instance=ExtResource("2_4gqnd")]
-position = Vector2(522, 350)
+position = Vector2(391, 443)
 
 [node name="Cup2" parent="." index="6" unique_id=620804170 instance=ExtResource("2_4gqnd")]
-position = Vector2(809, 429)
+position = Vector2(742, 192)
 
 [node name="Cup3" parent="." index="7" unique_id=1251610033 instance=ExtResource("2_4gqnd")]
 position = Vector2(809, 429)
